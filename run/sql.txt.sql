@@ -503,5 +503,4 @@ where upper(descricao) = 'ABRIL') as tb_abril,
 
 (select count(*) as qtd_campus from tb_livro l
 join tb_editora e on e.codigo = l.codigo_editora
-where upper(descricao) = 'CAMPUS') as tb_campus;//teste de alteracao
-
+where upper(descricao) = 'CAMPUS') as tb_campus;
