@@ -50,8 +50,8 @@ create table funcionario(
 );
 
 
--- RestriÁ„o
--- Chaves Prim·rias
+-- Restri√ß√£o
+-- Chaves Prim√°rias
 alter table editora 
 add constraint pkEditora primary key(codigoEditora);
 
@@ -67,7 +67,7 @@ add constraint pkLivro_autor primary key(codigoLivro_Autor);
 alter table funcionario 
 add constraint pkFuncionario primary key(codigoFuncionario);
 
--- RestriÁ„o
+-- Restri√ß√£o
 -- Chaves Estrangeiras
 
 alter table livro 
@@ -85,7 +85,7 @@ add constraint fklivro_autor_autor
 foreign key (codigoAutor) 
 references autor(codigoAutor);
 
--- RestriÁ„o de domÌnio (sexo)
+-- Restri√ß√£o de dom√≠nio (sexo)
 alter table autor 
 add constraint ck_sexo_autor
 check (sexo in ('M','F'));
@@ -94,12 +94,12 @@ alter table funcionario
 add constraint ck_sexo_funcionario
 check (sexo in ('M','F'));
 
--- InserÁ„o de registros (tuplas)
+-- Inser√ß√£o de registros (tuplas)
 --insert into nome_tabela (atributo1, atributo2, ....)
 --values (valor1, valor2,....);
 
 insert into editora (descricao,endereco)
-values ('Campus','Rua do TimbÛ');
+values ('Campus','Rua do Timb√≥');
 
 insert into editora (descricao,endereco)
 values ('Abril',NULL);
@@ -110,7 +110,7 @@ values ('Editora Teste');
 insert into tb_editora (descricao)
 values ('Editora Saraiva');
 
- -- SeleÁ„o
+ -- Sele√ß√£o
 select * from editora
 order by codigoEditora;
 
@@ -136,7 +136,7 @@ insert into livro (isbn, titulo, numeroEdicao, preco, codigoEditora)
 values ('98765', 'Redes de Computadores', 2, 80.00, 2);
 
 insert into autor (nome, sexo, dataNascimento) 
-values ('Jo„o', 'M', '01.01.1970');
+values ('Jo√£o', 'M', '01.01.1970');
 
 insert into autor (nome, sexo, dataNascimento) 
 values ('Maria', 'F', '17.05.1974');
@@ -167,7 +167,7 @@ insert into livro_autor (codigoLivro, codigoAutor)
 select * from livro_autor;
 
 insert into funcionario (nome, sexo) 
-values ('Jo„o', 'M');
+values ('Jo√£o', 'M');
 
 insert into funcionario (nome, sexo)
 values ('Carla', 'F');
@@ -177,7 +177,7 @@ insert into funcionario (nome, sexo)
 
 select * from funcionario;
 
--- Quest„o 01
+-- Quest√£o 01
 -- upper: maiusculo  lower: minusculo
 
 select * from editora
@@ -189,10 +189,10 @@ where upper(descricao) = 'campus';
 
 update editora
 set endereco = 'Av. ACM'
-where endereco = 'Rua do TimbÛ';
+where endereco = 'Rua do Timb√≥';
 
 select * from livro;
--- Quest„o 02
+-- Quest√£o 02
 update livro
 set preco = preco * 1.10
 where codigoLivro = 3;
@@ -200,7 +200,7 @@ where codigoLivro = 3;
 select * from editora
 order by codigoEditora;
 
--- Quest„o 03
+-- Quest√£o 03
 
 delete from editora 
 where codigoEditora = 2;
@@ -210,18 +210,18 @@ where codigoEditora = 2;
 delete from editora
 where upper(descricao) = 'ABRIL';
 
--- Quest„o 04
+-- Quest√£o 04
  select nome, dataNascimento
  from autor;
 
--- Quest„o 05
+-- Quest√£o 05
 -- asc: crescente    desc: decrecente
 select nome, dataNascimento
  from autor 
  order by nome;
 
 
--- Quest„o 06
+-- Quest√£o 06
 select * from autor;
 
 select nome, dataNascimento
@@ -234,17 +234,17 @@ from tb_autor
 where sexo = 'F'
 order by nome;
 
--- Distinct: atributo uma ˙nica vez. EliminaÁ„o de redud‚ncia do resultado
+-- Distinct: atributo uma √∫nica vez. Elimina√ß√£o de redud√¢ncia do resultado
 select distinct(sexo) 
 from autor;
 
--- Quest„o 07
--- is null: s„o nulos    is not null: n„o s„o nulos
+-- Quest√£o 07
+-- is null: s√£o nulos    is not null: n√£o s√£o nulos
 select descricao 
 from editora
 where endereco is null;
 
--- Quest„o 08
+-- Quest√£o 08
 select * from livro;
 
 select * from editora
@@ -268,14 +268,14 @@ join livro l
  on l.codigoEditora = e.codigoEditora;
 
 -- Inner: quando uma tabela tem um atributo igual a outra
--- Inner: n„o aceita null
+-- Inner: n√£o aceita null
 select l.titulo, e.descricao
 from editora e 
 inner join livro l 
 on l.codigoEditora = e.codigoEditora;
 
--- Quest„o 09
--- Ex.: tb_editora est· do lado esquerdo do join
+-- Quest√£o 09
+-- Ex.: tb_editora est√° do lado esquerdo do join
 select l.titulo, e.descricao 
 from editora e 
 left join livro l
@@ -288,13 +288,13 @@ from editora e
 full join livro l 
 on l.codigoEditora = e.codigoEditora;
 
--- Quando o nome do atributo s„o iguais
--- JunÁ„o natural
+-- Quando o nome do atributo s√£o iguais
+-- Jun√ß√£o natural
 -- select *
  from tb_livro
  join tb_editora using (codigo_editora)
 
---Quest„o 10
+--Quest√£o 10
 select * from tb_livro;
 select * from tb_autor;
 select * from tb_livro_autor;
@@ -306,21 +306,21 @@ on la.codigoLivro = l.codigoLivro
 join autor a 
 on la.codigoAutor = a.codigoAutor;
 
--- Quest„o 12
+-- Quest√£o 12
 select titulo
 from livro 
 where lower(titulo) like 'banco%';
 
--- Quest„o 13
+-- Quest√£o 13
 select titulo 
 from livro
  where upper(titulo) like '%DO%';
 
--- Quest„o 14
+-- Quest√£o 14
 select titulo, preco, preco * 1.05 as precoreajustado 
 from livro ;
 
--- Quest„o 15
+-- Quest√£o 15
 -- Extract: extrai parte de um atributo 
 --(century, year, month,day, hour, minute,second)
 
@@ -332,11 +332,11 @@ select nome, data_nascimento
 from tb_autor
 where extract(month from data_nascimento)=10
 
--- Quest„o 16
+-- Quest√£o 16
 select count(*) as acervo 
 from livro;
 
--- Quest„o 17
+-- Quest√£o 17
 select * from livro;
 select * from tb_autor;
 select * from tb_livro_autor;
@@ -347,7 +347,7 @@ join livro l
 on l.codigoLivro = la.codigoLivro
 where upper(l.titulo) = 'BANCO DE DADOS';
 
--- Quest„o 18, 19 e 20
+-- Quest√£o 18, 19 e 20
 
 select count(*), sum(preco), avg(preco), min(preco),
 max(preco) 
@@ -361,33 +361,33 @@ from livro
 where upper()
 
 
--- Quest„o 21
+-- Quest√£o 21
 -- min: mais velho    max: mais novo
 select * from autor;
 
 select min(dataNascimento) 
 from autor;
 
--- Quest„o 22
+-- Quest√£o 22
 select e.descricao, count(*) as quantidade
 from livro l 
 join editora e 
 on e.codigoEditora = l.codigoEditora
 group by e.descricao;
 
--- Quest„o 23
+-- Quest√£o 23
 select e.descricao, sum(l.preco) as soma, avg(l.preco)as media
 from livro l 
 join editora e 
 on e.codigoEditora = l.codigoEditora
 group by e.descricao;
 
--- Quest„o 24
+-- Quest√£o 24
 select * from tb_livro;
 select * from tb_autor;
 select * from tb_livro_autor;
 
--- having: sobre uma funÁ„o agregada (count,sum,avg..)
+-- having: sobre uma fun√ß√£o agregada (count,sum,avg..)
 select l.titulo, count(*)as num_autor
 from livro l 
 join livro_autor la 
@@ -395,7 +395,7 @@ on la.codigoLivro = l.codigoLivro
 group by l.titulo
 having count(*) > 1;
 
--- Quest„o 25
+-- Quest√£o 25
 select e.descricao,avg(l.preco)as media 
 from livro l 
 join editora e 
@@ -410,11 +410,11 @@ having avg(l.preco) > 100;
 -- salario > (select avg(salario) from tb_funcionario)
 --           (1500)
 -- In:      Not in:.
--- Quest„o 27 e 28
+-- Quest√£o 27 e 28
 
 select * from tb_autor;
 select * from tb_funcionario;
--- Autores que s„o funcion·rios
+-- Autores que s√£o funcion√°rios
 
 select nome
 from autor
@@ -422,7 +422,7 @@ where nome in
 		(select nome 
 		from funcionario); 
 
--- Autores que n„o s„o funcion·rios
+-- Autores que n√£o s√£o funcion√°rios
 select nome
 from autor
 where nome not in 
@@ -434,7 +434,7 @@ from autor a
 join funcionario f 
 on a.nome = f.nome
 
--- Quest„o 26 
+-- Quest√£o 26 
 -- Union:mesma quantidade e mesmo tipo
 	-- Descata duplicidade
 	-- ALL traz todos, colocar depois do union
@@ -446,7 +446,7 @@ select nome, sexo, 'f'
 from funcionario
 order by tipo;
 
--- Quest„o 27
+-- Quest√£o 27
 select nome 
 from autor 
 
@@ -455,11 +455,11 @@ intersect
 select nome 
 from funcionario;
 
--- Quest„o 28
+-- Quest√£o 28
 select nome
  from autor 
  
-except -- um menos o outro (diferenÁa)
+except -- um menos o outro (diferen√ßa)
 
 select nome
 from funcionario;
@@ -469,7 +469,7 @@ select nome
 from autor 
 where nome in 
 		(select nome 
-		 from funcionario); -- consulta n„o correlacionada
+		 from funcionario); -- consulta n√£o correlacionada
 
 select nome
 from autor a 
@@ -485,7 +485,7 @@ where not exists
 			 from tb_funcionario f 
 			 where f.nome = a.nome); --> consulta correlacionada
 
--- Quest„o 30
+-- Quest√£o 30
 select descricao, count(*) 
 from tb_editora e
 join tb_livro l
@@ -503,5 +503,5 @@ where upper(descricao) = 'ABRIL') as tb_abril,
 
 (select count(*) as qtd_campus from tb_livro l
 join tb_editora e on e.codigo = l.codigo_editora
-where upper(descricao) = 'CAMPUS') as tb_campus;
+where upper(descricao) = 'CAMPUS') as tb_campus;//teste de alteracao
 
